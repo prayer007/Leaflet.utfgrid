@@ -29,6 +29,11 @@ utfGrid.on('click', function (e) {
 		alert('click: nothing');
 	}
 });
+utfGrid.on('contextmenu', function (e) {
+	if (e.data) {
+		alert('rightclick: ' + e.data.admin);
+	} 
+});
 utfGrid.on('mouseover', function (e) {
 	console.log('hover: ' + e.data.admin);
 });

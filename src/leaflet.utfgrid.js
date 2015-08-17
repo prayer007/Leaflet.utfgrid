@@ -88,6 +88,7 @@ L.UtfGrid = (L.Layer || L.Class).extend({
 		}
 
 		map.on('click', this._click, this);
+		map.on('contextmenu', this._contextmenu, this);
 		map.on('mousemove', this._move, this);
 		map.on('moveend', this._update, this);
 	},
@@ -95,6 +96,7 @@ L.UtfGrid = (L.Layer || L.Class).extend({
 	onRemove: function () {
 		var map = this._map;
 		map.off('click', this._click, this);
+		map.off('contextmenu', this._contextmenu, this);
 		map.off('mousemove', this._move, this);
 		map.off('moveend', this._update, this);
 		if (this.options.pointerCursor) {
@@ -126,6 +128,9 @@ L.UtfGrid = (L.Layer || L.Class).extend({
 
 	_click: function (e) {
 		this.fire('click', this._objectForEvent(e));
+	},
+	_contextmenu: function(e) {
+		this.fire('contextmenu', this._objectForEvent(e));
 	},
 	_move: function (e) {
 		var on = this._objectForEvent(e);
